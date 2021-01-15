@@ -1,8 +1,8 @@
 バージョン情報
-ruby 2.6.5p114
+ruby 2.7.2p137
 rails 5.2.4.4
 psql 13.1
-gem 3.0.3
+gem 3.1.4
 ---
 Herokuへのデプロイ手順
 herokuへログインする
