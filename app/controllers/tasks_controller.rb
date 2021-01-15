@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :set_task,only:[ :show, :edit, :update, :destroy ]
+  before_action :ensure_current_user_task_check, only:[:show, :edit, :update, :destroy]
 
   def new
     @task = Task.new
@@ -8,7 +10,12 @@ class TasksController < ApplicationController
   end
 
   def create
-
+    @task = current_user.tasks.build(task_params)
+    if @task.save
+      redirect_to task_path(@task.id), notice:"タスクを作成しました"
+    else
+      render :new
+    end
   end
 
   def show
