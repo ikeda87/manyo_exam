@@ -1,0 +1,12 @@
+<div class="container">
+  <h3>Task_Detail</h3>
+  <p>Task:<%= @task.title %></p>
+  <p>Detail:<%= @task.content %></p>
+  <p>Status：<%= @task.status %></p>
+  <p>Priority:<%= @task.priority %></p>
+  <p>Deadline:<%= @task.deadline %></p>
+  <p>Label:<% @task.labels.each do|label| %><%= label.name %></p>
+  <% end %>
+  <%= link_to '編集', edit_task_path(@task.id) %>
+  <%= link_to '戻る', tasks_path %>
+</div>

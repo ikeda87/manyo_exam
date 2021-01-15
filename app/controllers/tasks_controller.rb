@@ -7,7 +7,8 @@ class TasksController < ApplicationController
   end
 
   def index
-  end
+
+end
 
   def create
     @task = current_user.tasks.build(task_params)
