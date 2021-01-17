@@ -1,0 +1,57 @@
+<% if @task.errors.any? %>
+  <h3><%= @task.errors.count %>件のエラーがあります。</h3>
+  <% @task.errors.full_messages.each do|msg| %>
+    <%= msg %><br>
+  <% end %>
+<% end %>
+<br>
+<%= form_with(model:@task,local:true)do|f| %>
+  <div>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+  <div>
+    <%= f.label :deadline %><br>
+    <%= f.date_field :deadline %>
+  </div>
+  <div>
+    <%= f.label :status %><br>
+    <%= f.select :status,Task.task_statuses.keys, include_blank:"選択してください" %>
+  </div>
+  <div>
+    <%= f.label :priority %><br>
+    <%= f.select :priority, Task.priorities.keys, include_blank:"選択してください" %>
+  </div>
+  <div>
+    <!-- <% n = 0 %> -->
+    <% if current_user.id == 1 %>
+      <% @default_user = User.find_by(id: 1) %>
+      <% @label_list = @default_user.labels %>
+      <%= f.collection_check_boxes(:label_ids, @label_list, :id, :name) %>
+      <!-- <% @label_list.each do |label| %>
+        <div>
+          <%= f.check_box :label_ids, { id: "checkbox#{n += 1}", multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+          <%= f.label :label, label.name %>
+        </div>
+      <% end %> -->
+    <% else %>
+      <% @default_user = User.find_by(id: 1) %>
+      <% @label_list = @default_user.labels + current_user.labels %>
+      <%= f.collection_check_boxes(:label_ids, @label_list, :id, :name) %>
+      <!-- <% @label_list.each do |label| %>
+        <div>
+          <%= f.check_box :label_ids, { id: "checkbox#{n += 1}", multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+          <%= f.label :label, label.name %>
+        </div>
+      <% end %> -->
+    <% end %>
+  </div>
+  <br>
+  <%= f.submit "登録する" %>
+  <br>
+  <br>
+<% end %>
