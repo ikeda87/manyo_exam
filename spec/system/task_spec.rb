@@ -71,6 +71,7 @@ RSpec.describe 'タスク管理機能', type: :system do
       end
     end
   end
+  
   describe '検索機能' do
     before do
       visit tasks_path
