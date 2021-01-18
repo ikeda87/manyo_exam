@@ -14,20 +14,7 @@
     <%= f.label :content %><br>
     <%= f.text_area :content %>
   </div>
-  <div>
-    <%= f.label :deadline %><br>
-    <%= f.date_field :deadline %>
-  </div>
-  <div>
-    <%= f.label :status %><br>
-    <%= f.select :status,Task.task_statuses.keys, include_blank:"選択してください" %>
-  </div>
-  <div>
-    <%= f.label :priority %><br>
-    <%= f.select :priority, Task.priorities.keys, include_blank:"選択してください" %>
-  </div>
 
-
-  <%# <%= f.submit "登録する" %> %>
+  <%= f.submit "登録する" %>
 
 <% end %>
