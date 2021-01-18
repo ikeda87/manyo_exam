@@ -34,7 +34,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１'
       end
     end
-    
+
     context 'タスクが作成日時の降順で並んでいた場合' do
       it '新しいタスクが一番上に表示される' do
         task_list = all('.task_row')
