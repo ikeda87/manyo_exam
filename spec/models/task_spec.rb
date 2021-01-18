@@ -7,12 +7,14 @@ describe 'タスクモデル機能', type: :model do
         expect(task).not_to be_valid
       end
     end
+
 　　context 'タスクの詳細が空の場合' do
       it 'バリデーションにひっかかる' do
         task = @user.tasks.create(title: '', content:'test', deadline:'002020-01-01', status:'未着手', priority:'高', user_id: '1' )
         expect(task).not_to be_valid
       end
     end
+    
     context 'タスクのタイトルと詳細に内容が記載されている場合' do
       it 'バリデーションが通る' do
         task = @user.tasks.create(title: 'test', content:'test', deadline:'002020-01-01', status:'未着手', priority:'高', user_id: '1' )

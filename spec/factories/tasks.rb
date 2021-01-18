@@ -6,6 +6,7 @@ FactoryBot.define do
     status { '未着手' }
     priority { '高' }
   end
+  
   factory :second_task, class: Task do
     title { 'Factoryで作ったデフォルトのタイトル２' }
     content { 'Factoryで作ったデフォルトのコンテント２' }
