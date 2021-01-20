@@ -1,7 +1,7 @@
 <% if @task.errors.any? %>
   <h3><%= @task.errors.count %>件のエラーがあります。</h3>
   <% @task.errors.full_messages.each do|msg| %>
-    <%= message %>
+    <%= msg %>
   <% end %>
 <% end %>
 <br>
@@ -14,7 +14,5 @@
     <%= f.label :content %><br>
     <%= f.text_area :content %>
   </div>
-
   <%= f.submit "登録する" %>
-
 <% end %>
