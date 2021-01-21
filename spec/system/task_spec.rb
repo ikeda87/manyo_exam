@@ -26,6 +26,7 @@ RSpec.describe 'タスク管理機能', type: :system do
       end
     end
   end
+  
   describe 'タスク管理機能', type: :system do
     describe '一覧表示機能' do
       context '一覧画面に遷移した場合' do
