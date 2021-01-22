@@ -15,9 +15,6 @@ RSpec.describe 'タスク管理機能', type: :system do
         visit new_task_path
         fill_in "タイトル", with: "買う"
         fill_in "詳細", with: "見る"
-        fill_in "終了期限", with: "002021-01-18"
-        select "着手中", from: "ステータス"
-        select "高", from: "優先度"
         # binding.irb
         # check ''
         click_button '登録する'
