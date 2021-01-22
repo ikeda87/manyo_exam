@@ -26,14 +26,14 @@ RSpec.describe 'タスク管理機能', type: :system do
       end
     end
   end
-  
+
   describe 'タスク管理機能', type: :system do
     describe '一覧表示機能' do
       context '一覧画面に遷移した場合' do
         it '作成済みのタスク一覧が表示される' do
           task = FactoryBot.create(:task, title: 'task')
           visit tasks_path
-          expect(page).to have_content 'task_failure'
+          expect(page).to have_content 'Factoryで作ったデフォルトのタイトル1'
         end
       end
     end
