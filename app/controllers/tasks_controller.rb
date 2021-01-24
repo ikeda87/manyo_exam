@@ -6,7 +6,15 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.all.order(created_at: "desc")
+   if params[:task].present?
+     if params[:task][:title].present? && params[:task][:status].present?
+      @task = current_user.tasks.search_title(params[:task][:title]).search_status(params[:task][:status]).pagination(params)
+     elsif params[:task][:title].present?
+      @task = current_user.tasks.search_title(params[:task][:title]).pagination(params)
+     elsif params[:task][:status].present?
+      @task = current_user.tasks.search_status(params[:task][:status]).pagination(params)
+     end
+   end
   end
 
   def create
@@ -39,7 +47,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:title,:content)
+    params.require(:task).permit(:title,:content,:status)
   end
 
   def set_task
