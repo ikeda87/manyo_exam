@@ -16,6 +16,7 @@ class TasksController < ApplicationController
      end
    end
   end
+  # タイトルとステータス検索の実装のヒント
 
   def create
     @task = Task.new(task_params)
