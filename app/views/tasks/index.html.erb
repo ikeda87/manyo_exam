@@ -8,11 +8,14 @@
   <tr>
     <th>タスク名</th>
     <th>詳細</th>
+    <th>ステータス</th>
   </tr>
     <% @tasks.each do |task| %>
     <tr class = "task_row" >
     <td><%= task.title %></td>
     <td><%= task.content %></td>
+    <td><%= task.status %></td>
+
     <td><%= link_to '編集', edit_task_path(task.id), data: { confirm: '編集していいですか？' } %></td>
     <td><%= link_to "詳細", task_path(task.id) %></td>
     <td><%= link_to '削除', task_path(task.id), method: :delete, data: { confirm: '削除してよいですか？' } %></td>
