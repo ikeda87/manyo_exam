@@ -2,6 +2,9 @@
 <% if notice.present? %>
   <p class="alert alert-success"><%= notice %></p>
 <% end %>
+<div class="task_count_now">
+  <p>現在<%= @task.count %>件のタスクが表示されています</p>
+</div>
 <div class="main_container">
 <table>
  <div class="task_item">
