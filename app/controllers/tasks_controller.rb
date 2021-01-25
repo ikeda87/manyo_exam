@@ -8,11 +8,11 @@ class TasksController < ApplicationController
   def index
    if params[:task].present?
      if params[:task][:title].present? && params[:task][:status].present?
-      @task = current_user.tasks.search_title(params[:task][:title]).search_status(params[:task][:status]).pagination(params)
+      @tasks = current_user.tasks.search_title(params[:task][:title]).search_status(params[:task][:status]).pagination(params)
      elsif params[:task][:title].present?
-      @task = current_user.tasks.search_title(params[:task][:title]).pagination(params)
+      @tasks = current_user.tasks.search_title(params[:task][:title]).pagination(params)
      elsif params[:task][:status].present?
-      @task = current_user.tasks.search_status(params[:task][:status]).pagination(params)
+      @tasks = current_user.tasks.search_status(params[:task][:status]).pagination(params)
      end
    end
   end
