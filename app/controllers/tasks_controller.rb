@@ -15,6 +15,12 @@ class TasksController < ApplicationController
      elsif params[:task][:status].present?
       @tasks = current_user.tasks.search_status(params[:task][:status]).pagination(params)
      end
+   # elsif
+   #   if params[:sort_expired].present?
+   #     @tasks = current_user.tasks.sort_deadline.pagination(params)
+   #   elsif params[:sort_priority].present?
+   #     @tasks = current_user.tasks.sort_priority.pagination(params)
+   #   end
    end
   end
 
