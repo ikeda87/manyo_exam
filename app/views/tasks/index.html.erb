@@ -35,17 +35,15 @@
     <td><%= task.status %></td>
     <td><%= task.deadline %></td>
     <td><%= task.priority %></td>
-
-    <td><%= link_to '編集', edit_task_path(task.id), data: { confirm: '編集していいですか？' } %></td>
+    <td><%= link_to '編集', edit_task_path(task.id), data: { confirm: '編集しますか？' } %></td>
     <td><%= link_to "詳細", task_path(task.id) %></td>
-    <td><%= link_to '削除', task_path(task.id), method: :delete, data: { confirm: '削除してよいですか？' } %></td>
+    <td><%= link_to '削除', task_path(task.id), method: :delete, data: { confirm: '削除しますか？' } %></td>
   </tr>
  </div>
 <% end %>
 </table>
 </div>
-
-<div>
+ <div>
     <%= link_to 'タスクを登録する',new_task_path, class:'btn btn-info' %>
-</div>
+ </div>
 </div>
