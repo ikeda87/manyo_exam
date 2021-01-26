@@ -3,8 +3,7 @@
   <% @task.errors.full_messages.each do|msg| %>
     <%= msg %>
   <% end %>
-<% end %>
-<br>
+<% end %><br>
 <%= form_with(model:@task,local:true)do|f| %>
   <div><br>
     <%= f.label :title %><br>
