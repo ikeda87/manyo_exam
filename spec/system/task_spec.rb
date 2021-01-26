@@ -3,26 +3,35 @@ RSpec.describe 'タスク管理機能', type: :system do
  let!(:task) { FactoryBot.create(:task, title: 'task') }
  before do
 
-  describe '新規作成機能' do
-    context 'タスクを新規作成した場合' do
-      it '作成したタスクが表示される' do
-      end
-    end
-  end
+   describe '新規作成機能' do
+     context 'タスクを新規作成した場合' do
+       it '作成したタスクが表示される' do
+         visit new_task_path
+         fill_in "タイトル", with: "買う"
+         fill_in "詳細", with: "見てみる"
+         fill_in "終了期限", with: "002021-01-28"
+         select "着手中", from: "ステータス"
+         select "高", from: "優先度"
+         # binding.irb
+         # check ''
+         click_button '登録する'
+         expect(page).to have_content 'リュック買う'
+       end
+     end
+   end
 
-  describe '一覧表示機能' do
-    context '一覧画面に遷移した場合' do
-      it '作成済みのタスク一覧が表示される' do
-        expect(page).to have_content 'Factoryで作ったデフォルトのタイトル1'
-      end
-    end
-    # テスト内容を追加で記載する
-    context 'タスクが作成日時の降順で並んでいた場合' do
-      it '新しいタスクが一番上に表示される' do
-        task_list = all('.task_row')
-        expect(task_list[0]).to have_content 'Factoryで作ったデフォルトのタイトル3'
-      end
-    end
+   describe '一覧表示機能' do
+     context '一覧画面に遷移した場合' do
+       it '作成済みのタスク一覧が表示される' do
+         expect(page).to have_content 'Factoryで作ったデフォルトのタイトル１'
+       end
+     end
+     context 'タスクが作成日時の降順で並んでいた場合' do
+       it '新しいタスクが一番上に表示される' do
+         task_list = all('.task_row')
+         expect(task_list[0]).to have_content 'Factoryで作ったデフォルトのタイトル３'
+       end
+     end
   end
 
   describe '詳細表示機能' do
@@ -59,4 +68,5 @@ RSpec.describe 'タスク管理機能', type: :system do
         end
       end
     end
+   end
   end
