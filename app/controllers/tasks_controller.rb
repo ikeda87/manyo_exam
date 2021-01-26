@@ -7,28 +7,29 @@ class TasksController < ApplicationController
 
   def index
   @tasks = Task.all.order(created_at: "desc")
-   if params[:task].present?
-     if params[:task][:title].present? && params[:task][:status].present?
-      @tasks = current_user.tasks.search_title(params[:task][:title]).search_status(params[:task][:status]).pagination(params)
-     elsif params[:task][:title].present?
-      @tasks = current_user.tasks.search_title(params[:task][:title]).pagination(params)
-     elsif params[:task][:status].present?
-      @tasks = current_user.tasks.search_status(params[:task][:status]).pagination(params)
-     end
-   elsif
-     if params[:sort_expired].present?
-      @tasks = current_user.tasks.sort_deadline.pagination(params)
-      elsif params[:sort_priority].present?
-      @tasks = current_user.tasks.sort_priority.pagination(params)
-    end
-   end
+   # if params[:task].present?
+   #   if params[:task][:title].present? && params[:task][:status].present?
+   #    @tasks = current_user.tasks.search_title(params[:task][:title]).search_status(params[:task][:status]).pagination(params)
+   #   elsif params[:task][:title].present?
+   #    @tasks = current_user.tasks.search_title(params[:task][:title]).pagination(params)
+   #   elsif params[:task][:status].present?
+   #    @tasks = current_user.tasks.search_status(params[:task][:status]).pagination(params)
+   #   end
+   # elsif
+   #   if params[:sort_expired].present?
+   #    @tasks = current_user.tasks.sort_deadline.pagination(params)
+   #    elsif params[:sort_priority].present?
+   #    @tasks = current_user.tasks.sort_priority.pagination(params)
+   #  end
+   # end
 end
 
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to @task, notice: '詳細が表示されます'
+      redirect_to task_path(@task), notice: t('詳細が表示されます')
     else
+      flash.now[:alert] = t('falsh.failure')
       render :new
     end
   end
