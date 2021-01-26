@@ -3,5 +3,7 @@ class AddColumnsToTasks < ActiveRecord::Migration[5.2]
     add_column :tasks, :status, :integer
 
     add_column :tasks, :deadline, :date
+
+    add_column :tasks, :priority, :integer
   end
 end
