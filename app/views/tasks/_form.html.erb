@@ -22,6 +22,10 @@
   <%= f.label :status %><br>
   <%= f.select :status,Task.task_statuses.keys, include_blank:"選択してください" %>
 </div>
+<div><br>
+  <%= f.label :priority %><br>
+  <%= f.select :priority, Task.priorities.keys, include_blank:"選択してください" %>
+</div>
 <br><br>
   <%= f.submit "登録する", class:'btn btn-info' %>
 <br><br>
