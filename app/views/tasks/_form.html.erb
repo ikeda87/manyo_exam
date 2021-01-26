@@ -6,21 +6,23 @@
 <% end %>
 <br>
 <%= form_with(model:@task,local:true)do|f| %>
-  <div>
+  <div><br>
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title %><br>
   </div>
-  <div>
+  <div><br>
     <%= f.label :content %><br>
-    <%= f.text_area :content %>
+    <%= f.text_area :content %><br>
   </div>
-  <div>
+  <div><br>
   <%= f.label :deadline %><br>
-  <%= f.date_field :deadline %>
+  <%= f.date_field :deadline %><br>
 </div>
-<div>
+<div><br>
   <%= f.label :status %><br>
   <%= f.select :status,Task.task_statuses.keys, include_blank:"選択してください" %>
 </div>
-  <%= f.submit "登録する" %>
+<br><br>
+  <%= f.submit "登録する", class:'btn btn-info' %>
+<br><br>
 <% end %>
