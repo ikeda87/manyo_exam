@@ -6,6 +6,7 @@ class TasksController < ApplicationController
   end
 
   def index
+  @tasks = Task.all.order(created_at: "desc")
    if params[:task].present?
      if params[:task][:title].present? && params[:task][:status].present?
       @tasks = current_user.tasks.search_title(params[:task][:title]).search_status(params[:task][:status]).pagination(params)
@@ -47,7 +48,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:title,:content,:status)
+    params.require(:task).permit(:title,:content,:status,:deadline)
   end
 
   def set_task

@@ -8,5 +8,4 @@ class Task < ApplicationRecord
   scope :sort_deadline, -> { order(deadline: "DESC") }
   scope :search_title, -> (title){ where("title LIKE?","%#{title}%") }
   scope :search_status, -> (status){ where(status: status) }
-  belongs_to :user
 end
